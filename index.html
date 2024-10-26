@@ -25,11 +25,12 @@
       border: 2px solid lime;
       margin: 5px;
       cursor: pointer;
-      transition: transform 0.2s ease-in-out;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     }
 
     .menu button:hover {
       transform: scale(1.2);
+      box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.7);
     }
 
     .hidden {
@@ -47,10 +48,38 @@
         opacity: 0;
       }
     }
+
+    .loading-spinner {
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #00FF00;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="loading-spinner" id="loadingSpinner"></div>
+  <div class="container hidden" id="mainContent">
     <h1>Welcome to Retro Games Hub!</h1>
     <p>Your one-stop site for classic games, tips, and tricks.</p>
 
@@ -81,16 +110,17 @@
   <script>
     function navigateToSection(section) {
       document.querySelectorAll('.game-section').forEach((sec) => {
-        sec.style.display = 'none';
+        sec.classList.add('hidden');
       });
-      document.getElementById(section).style.display = 'block';
+      const targetSection = document.getElementById(section);
+      targetSection.classList.remove('hidden');
+      targetSection.classList.add('fade-in');
     }
 
     window.onload = () => {
       console.log('Welcome to Retro Games Hub!');
-      var introMusic = new Audio('intro.mp3');
-      introMusic.play();
-      document.body.style.border = '3px dashed red';
+      document.getElementById('loadingSpinner').style.display = 'none';
+      document.getElementById('mainContent').classList.remove('hidden');
       console.log('Enjoy your stay!');
     }
   </script>
