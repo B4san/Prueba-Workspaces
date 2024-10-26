@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Retro Games Hub</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #00FF00;
+      font-family: "Comic Sans MS", cursive;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+      border: 5px dotted yellow;
+      margin-top: 20px;
+    }
+
+    .menu button {
+      background-color: #FF00FF;
+      color: #000;
+      padding: 15px 25px;
+      border: 2px solid lime;
+      margin: 5px;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .menu button:hover {
+      transform: scale(1.2);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .content h2 {
+      font-size: 2rem;
+      color: #FF00FF;
+      animation: blinker 1s step-start infinite;
+    }
+
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Retro Games Hub!</h1>
+    <p>Your one-stop site for classic games, tips, and tricks.</p>
+
+    <div class="menu">
+      <button onclick="navigateToSection('arcade')">Arcade</button>
+      <button onclick="navigateToSection('platformer')">Platformers</button>
+      <button onclick="navigateToSection('racing')">Racing</button>
+    </div>
+
+    <div class="content">
+      <section id="arcade" class="game-section hidden">
+        <h2>Arcade Classics</h2>
+        <p>Experience timeless arcade classics like <b>Pac-Man</b>, <b>Space Invaders</b>, and more!</p>
+      </section>
+
+      <section id="platformer" class="game-section hidden">
+        <h2>Platformer Favorites</h2>
+        <p>From <b>Super Mario Bros.</b> to <b>Donkey Kong</b>, relive the golden age of platformers!</p>
+      </section>
+
+      <section id="racing" class="game-section hidden">
+        <h2>High-Speed Racing</h2>
+        <p>Fasten your seatbelt for classics like <b>Out Run</b> and <b>Top Gear</b>!</p>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    function navigateToSection(section) {
+      document.querySelectorAll('.game-section').forEach((sec) => {
+        sec.style.display = 'none';
+      });
+      document.getElementById(section).style.display = 'block';
+    }
+
+    window.onload = () => {
+      console.log('Welcome to Retro Games Hub!');
+      var introMusic = new Audio('intro.mp3');
+      introMusic.play();
+      document.body.style.border = '3px dashed red';
+      console.log('Enjoy your stay!');
+    }
+  </script>
+</body>
+</html>
