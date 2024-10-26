@@ -93,21 +93,39 @@
       <section id="arcade" class="game-section hidden">
         <h2>Arcade Classics</h2>
         <p>Experience timeless arcade classics like <b>Pac-Man</b>, <b>Space Invaders</b>, and more!</p>
+        <div id="arcade-games"></div>
       </section>
 
       <section id="platformer" class="game-section hidden">
         <h2>Platformer Favorites</h2>
         <p>From <b>Super Mario Bros.</b> to <b>Donkey Kong</b>, relive the golden age of platformers!</p>
+        <div id="platformer-games"></div>
       </section>
 
       <section id="racing" class="game-section hidden">
         <h2>High-Speed Racing</h2>
         <p>Fasten your seatbelt for classics like <b>Out Run</b> and <b>Top Gear</b>!</p>
+        <div id="racing-games"></div>
       </section>
     </div>
   </div>
 
   <script>
+    const gameDetails = {
+      arcade: [
+        { title: "Pac-Man", thumbnail: "path/to/pacman.jpg", year: 1980 },
+        { title: "Space Invaders", thumbnail: "path/to/spaceinvaders.jpg", year: 1978 }
+      ],
+      platformer: [
+        { title: "Super Mario Bros.", thumbnail: "path/to/supermario.jpg", year: 1985 },
+        { title: "Donkey Kong", thumbnail: "path/to/donkeykong.jpg", year: 1981 }
+      ],
+      racing: [
+        { title: "Out Run", thumbnail: "path/to/outrun.jpg", year: 1986 },
+        { title: "Top Gear", thumbnail: "path/to/topgear.jpg", year: 1992 }
+      ]
+    };
+
     function navigateToSection(section) {
       document.querySelectorAll('.game-section').forEach((sec) => {
         sec.classList.add('hidden');
@@ -115,6 +133,20 @@
       const targetSection = document.getElementById(section);
       targetSection.classList.remove('hidden');
       targetSection.classList.add('fade-in');
+      loadGameDetails(section);
+    }
+
+    function loadGameDetails(section) {
+      const gamesContainer = document.getElementById(`${section}-games`);
+      gamesContainer.innerHTML = "";
+      gameDetails[section].forEach(game => {
+        const gameElement = document.createElement("div");
+        gameElement.innerHTML = `
+          <img src="${game.thumbnail}" alt="${game.title} Thumbnail" width="100">
+          <p>${game.title} (${game.year})</p>
+        `;
+        gamesContainer.appendChild(gameElement);
+      });
     }
 
     window.onload = () => {

@@ -9,6 +9,7 @@ Prueba-Workspaces is a web-based project that serves as a hub for retro games. I
 - **Green-Themed Animations**: Buttons have a green glow effect when hovered over.
 - **Loading Animation**: A green spinner is displayed while the page is loading.
 - **Transition Effects**: Sections fade in and out with a green tint when navigating between them.
+- **Dynamic Game Details Loading**: Game details (thumbnail and release year) are dynamically loaded when a section is clicked.
 
 ## Sections
 
@@ -20,7 +21,8 @@ Prueba-Workspaces is a web-based project that serves as a hub for retro games. I
 
 1. Open the `index.html` file in a web browser.
 2. Use the navigation buttons to switch between different game sections.
-3. Enjoy the retro gaming experience with green-themed animations and effects.
+3. Click on a section to dynamically load and display game details (thumbnail and release year).
+4. Enjoy the retro gaming experience with green-themed animations and effects.
 
 ## Technologies Used
 
